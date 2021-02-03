@@ -15,6 +15,10 @@
 
 ### Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [023: elm-format](https://elm-radio.com/episode/elm-format)
+- [022: elm-tooling with Simon Lydell](https://elm-radio.com/episode/elm-tooling)
+- [021: elm-review Tips](https://elm-radio.com/episode/elm-review-tips)
+- [020: Holiday Special!](https://elm-radio.com/episode/holiday-special)
 <!-- ELM-RADIO-LIST:END -->
 
 <h3 align="left">Connect with me:</h3>
