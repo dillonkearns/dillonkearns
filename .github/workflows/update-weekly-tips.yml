@@ -15,3 +15,8 @@ jobs:
         with:
           feed_list: "http://incrementalelm.com/tips/feed.xml"
           max_post_count: 4
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          comment_tag_name: "ELM-RADIO-LIST"
+          feed_list: "https://elm-radio.com/feed.xml"
+          max_post_count: 4

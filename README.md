@@ -4,15 +4,18 @@
 
 <p align="left"> <a href="https://twitter.com/dillontkearns" target="blank"><img src="https://img.shields.io/twitter/follow/dillontkearns?logo=twitter&style=for-the-badge" alt="dillontkearns" /></a> </p>
 
-- 📫 Get my weekly tips **https://incrementalelm.com/tips**
 
-### Blogs posts
+### 📫 Recent [Elm Weekly Tips](https://incrementalelm.com/tips)
 <!-- BLOG-POST-LIST:START -->
 - [TypeScript Without Transpilation](https://incrementalelm.com/tips/typescript-without-transpilation)
 - [I'm Not a Programmer, I'm an Automator](https://incrementalelm.com/tips/automating-quality)
 - [The Keystone Testing Habit](https://incrementalelm.com/tips/keystone-testing-habit)
 - [Relentless Tiny Habits](https://incrementalelm.com/tips/relentless-tiny-habits)
 <!-- BLOG-POST-LIST:END -->
+
+### Recent [Elm Radio](https://elm-radio.com/) podcast episodes
+<!-- ELM-RADIO-LIST:START -->
+<!-- ELM-RADIO-LIST:END -->
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
