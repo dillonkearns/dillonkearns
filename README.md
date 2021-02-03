@@ -8,6 +8,10 @@
 
 ### Blogs posts
 <!-- BLOG-POST-LIST:START -->
+- [TypeScript Without Transpilation](https://incrementalelm.com/tips/typescript-without-transpilation)
+- [I'm Not a Programmer, I'm an Automator](https://incrementalelm.com/tips/automating-quality)
+- [The Keystone Testing Habit](https://incrementalelm.com/tips/keystone-testing-habit)
+- [Relentless Tiny Habits](https://incrementalelm.com/tips/relentless-tiny-habits)
 <!-- BLOG-POST-LIST:END -->
 
 <h3 align="left">Connect with me:</h3>
