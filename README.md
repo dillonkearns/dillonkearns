@@ -13,7 +13,7 @@
 - [Relentless Tiny Habits](https://incrementalelm.com/tips/relentless-tiny-habits)
 <!-- BLOG-POST-LIST:END -->
 
-### Recent [Elm Radio](https://elm-radio.com/) podcast episodes
+### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
 - [023: elm-format](https://elm-radio.com/episode/elm-format)
 - [022: elm-tooling with Simon Lydell](https://elm-radio.com/episode/elm-tooling)
@@ -28,4 +28,3 @@
 <a href="https://www.youtube.com/c/dillonkearns" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/youtube.svg" alt="dillonkearns" height="30" width="40" /></a>
 <a href="/http://incrementalelm.com/tips/feed.xml" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/rss.svg" alt="http://incrementalelm.com/tips/feed.xml" height="30" width="40" /></a>
 </p>
-
