@@ -7,10 +7,10 @@
 
 ### 📫 Recent [Elm Weekly Tips](https://incrementalelm.com/tips)
 <!-- BLOG-POST-LIST:START -->
+- [TypeScript's Blind Spots](https://incrementalelm.com/tips/typescript-blind-spots)
 - [TypeScript Without Transpilation](https://incrementalelm.com/tips/typescript-without-transpilation)
 - [I'm Not a Programmer, I'm an Automator](https://incrementalelm.com/tips/automating-quality)
 - [The Keystone Testing Habit](https://incrementalelm.com/tips/keystone-testing-habit)
-- [Relentless Tiny Habits](https://incrementalelm.com/tips/relentless-tiny-habits)
 <!-- BLOG-POST-LIST:END -->
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
