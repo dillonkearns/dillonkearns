@@ -2,7 +2,7 @@
 <h3 align="center">I help people improve their Elm workflows with my tips, tools, and techniques.</h3>
 
 
-<p align="left"> <a href="https://twitter.com/dillontkearns" target="blank"><img src="https://img.shields.io/twitter/follow/dillontkearns?logo=twitter&style=for-the-badge" alt="dillontkearns" /></a> </p>
+<p align="left"> <a href="https://twitter.com/dillontkearns" target="blank"><img src="https://img.shields.io/twitter/follow/dillontkearns" alt="dillontkearns" /></a> </p>
 
 
 ### 📫 Recent [Elm Weekly Tips](https://incrementalelm.com/tips)
