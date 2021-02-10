@@ -10,7 +10,6 @@
 - [TypeScript's Blind Spots](https://incrementalelm.com/tips/typescript-blind-spots)
 - [TypeScript Without Transpilation](https://incrementalelm.com/tips/typescript-without-transpilation)
 - [I'm Not a Programmer, I'm an Automator](https://incrementalelm.com/tips/automating-quality)
-- [The Keystone Testing Habit](https://incrementalelm.com/tips/keystone-testing-habit)
 <!-- BLOG-POST-LIST:END -->
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
