@@ -7,9 +7,9 @@
 
 ### 📫 Recent [Elm Weekly Tips](https://incrementalelm.com/tips)
 <!-- BLOG-POST-LIST:START -->
+- [Combinators - Inverting Top-Down Transforms](https://incrementalelm.com/tips/combinators)
 - [TypeScript's Blind Spots](https://incrementalelm.com/tips/typescript-blind-spots)
 - [TypeScript Without Transpilation](https://incrementalelm.com/tips/typescript-without-transpilation)
-- [I'm Not a Programmer, I'm an Automator](https://incrementalelm.com/tips/automating-quality)
 <!-- BLOG-POST-LIST:END -->
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
