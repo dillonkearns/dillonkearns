@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [025: elm-ts-interop](https://elm-radio.com/episode/elm-ts-interop)
 - [024: elm-program-test](https://elm-radio.com/episode/elm-program-test)
 - [023: elm-format](https://elm-radio.com/episode/elm-format)
-- [022: elm-tooling with Simon Lydell](https://elm-radio.com/episode/elm-tooling)
 <!-- ELM-RADIO-LIST:END -->
