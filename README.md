@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [026: Funding Open Source with Evan Czaplicki](https://elm-radio.com/episode/open-source-funding)
 - [025: elm-ts-interop](https://elm-radio.com/episode/elm-ts-interop)
 - [024: elm-program-test](https://elm-radio.com/episode/elm-program-test)
-- [023: elm-format](https://elm-radio.com/episode/elm-format)
 <!-- ELM-RADIO-LIST:END -->
