@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [027: elm-tailwind-modules](https://elm-radio.com/episode/elm-tailwind-modules)
 - [026: Funding Open Source with Evan Czaplicki](https://elm-radio.com/episode/open-source-funding)
 - [025: elm-ts-interop](https://elm-radio.com/episode/elm-ts-interop)
-- [024: elm-program-test](https://elm-radio.com/episode/elm-program-test)
 <!-- ELM-RADIO-LIST:END -->
