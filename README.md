@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [031: Elm Code Generation](https://elm-radio.com/episode/code-generation)
 - [030: Debugging in Elm](https://elm-radio.com/episode/debugging-in-elm)
 - [029: Writing an elm-review Rule](https://elm-radio.com/episode/writing-an-elm-review-rule)
-- [028: GitHub Actions](https://elm-radio.com/episode/github-actions)
 <!-- ELM-RADIO-LIST:END -->
