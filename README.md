@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [034: API Design Lessons](https://elm-radio.com/episode/api-design-lessons)
 - [033: Accessibility in Elm](https://elm-radio.com/episode/accessibility)
 - [032: Elm's Universal Pattern](https://elm-radio.com/episode/universal-pattern)
-- [031: Elm Code Generation](https://elm-radio.com/episode/code-generation)
 <!-- ELM-RADIO-LIST:END -->
