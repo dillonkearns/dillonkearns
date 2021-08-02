@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [036: elm-pages 2.0](https://elm-radio.com/episode/elm-pages-v2)
 - [035: elm-spa v6](https://elm-radio.com/episode/elm-spa-v6)
 - [034: API Design Lessons](https://elm-radio.com/episode/api-design-lessons)
-- [033: Accessibility in Elm](https://elm-radio.com/episode/accessibility)
 <!-- ELM-RADIO-LIST:END -->
