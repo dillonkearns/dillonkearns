@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [039: elm-charts](https://elm-radio.com/episode/elm-charts)
 - [038: Lamdera](https://elm-radio.com/episode/lamdera)
 - [037: Performance in Elm](https://elm-radio.com/episode/performance)
-- [036: elm-pages 2.0](https://elm-radio.com/episode/elm-pages-v2)
 <!-- ELM-RADIO-LIST:END -->
