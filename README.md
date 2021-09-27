@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [040: Phantom Builder Pattern](https://elm-radio.com/episode/phantom-builder)
 - [039: elm-charts](https://elm-radio.com/episode/elm-charts)
 - [038: Lamdera](https://elm-radio.com/episode/lamdera)
-- [037: Performance in Elm](https://elm-radio.com/episode/performance)
 <!-- ELM-RADIO-LIST:END -->
