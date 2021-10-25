@@ -7,9 +7,9 @@
 
 ### 📫 Recent [Elm Weekly Tips](https://incrementalelm.com/tips)
 <!-- BLOG-POST-LIST:START -->
+- [Opaque Types Let You Think Locally](https://incrementalelm.com/opaque-types-let-you-think-locally)
 - [elm-ts-interop init Command, Codec and Pipeline APIs, and docs site](https://incrementalelm.com/elm-ts-interop-improvements)
 - [Types Without Borders Isn't Enough](https://incrementalelm.com/types-without-borders-isnt-enough)
-- [Combinators - Inverting Top-Down Transforms](https://incrementalelm.com/combinators)
 <!-- BLOG-POST-LIST:END -->
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
