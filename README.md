@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [042: Comparing TypeScript and Elm's Type Systems](https://elm-radio.com/episode/ts-and-elm-type-systems)
 - [041: elm-markdown](https://elm-radio.com/episode/elm-markdown)
 - [040: Phantom Builder Pattern](https://elm-radio.com/episode/phantom-builder)
-- [039: elm-charts](https://elm-radio.com/episode/elm-charts)
 <!-- ELM-RADIO-LIST:END -->
