@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [043: Teaching Elm with Richard Feldman](https://elm-radio.com/episode/teaching-elm)
 - [042: Comparing TypeScript and Elm&#39;s Type Systems](https://elm-radio.com/episode/ts-and-elm-type-systems)
 - [041: elm-markdown](https://elm-radio.com/episode/elm-markdown)
-- [040: Phantom Builder Pattern](https://elm-radio.com/episode/phantom-builder)
 <!-- ELM-RADIO-LIST:END -->
