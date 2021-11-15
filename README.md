@@ -7,9 +7,9 @@
 
 ### 📫 Recent [Elm Weekly Tips](https://incrementalelm.com/tips)
 <!-- BLOG-POST-LIST:START -->
+- [Announcing the Intro to elm-ts-interop Course](https://incrementalelm.com/announcing-elm-ts-interop-course)
 - [Opaque Types Let You Think Locally](https://incrementalelm.com/opaque-types-let-you-think-locally)
 - [elm-ts-interop init Command, Codec and Pipeline APIs, and docs site](https://incrementalelm.com/elm-ts-interop-improvements)
-- [Types Without Borders Isn&#39;t Enough](https://incrementalelm.com/types-without-borders-isnt-enough)
 <!-- BLOG-POST-LIST:END -->
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
