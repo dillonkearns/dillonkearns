@@ -7,9 +7,9 @@
 
 ### 📫 Recent [Elm Weekly Tips](https://incrementalelm.com/tips)
 <!-- BLOG-POST-LIST:START -->
+- [When It Compiles, But Doesn&#39;t Work](https://incrementalelm.com/when-it-compiles-but-doesnt-work)
 - [Announcing the Intro to elm-ts-interop Course](https://incrementalelm.com/announcing-elm-ts-interop-course)
 - [Opaque Types Let You Think Locally](https://incrementalelm.com/opaque-types-let-you-think-locally)
-- [elm-ts-interop init Command, Codec and Pipeline APIs, and docs site](https://incrementalelm.com/elm-ts-interop-improvements)
 <!-- BLOG-POST-LIST:END -->
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
