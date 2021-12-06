@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [045: How We Learn](https://elm-radio.com/episode/learning)
 - [044: elm-webgl](https://elm-radio.com/episode/elm-webgl)
 - [043: Teaching Elm with Richard Feldman](https://elm-radio.com/episode/teaching-elm)
-- [042: Comparing TypeScript and Elm&#39;s Type Systems](https://elm-radio.com/episode/ts-and-elm-type-systems)
 <!-- ELM-RADIO-LIST:END -->
