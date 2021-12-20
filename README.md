@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [046: 2021 Holiday Special!](https://elm-radio.com/episode/2021-holiday-special)
 - [045: How We Learn](https://elm-radio.com/episode/learning)
 - [044: elm-webgl](https://elm-radio.com/episode/elm-webgl)
-- [043: Teaching Elm with Richard Feldman](https://elm-radio.com/episode/teaching-elm)
 <!-- ELM-RADIO-LIST:END -->
