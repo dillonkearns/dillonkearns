@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [048: If It Compiles It Works](https://elm-radio.com/episode/if-it-compiles-it-works)
 - [047: What&#39;s Working for Elm](https://elm-radio.com/episode/whats-working-for-elm)
 - [046: 2021 Holiday Special!](https://elm-radio.com/episode/2021-holiday-special)
-- [045: How We Learn](https://elm-radio.com/episode/learning)
 <!-- ELM-RADIO-LIST:END -->
