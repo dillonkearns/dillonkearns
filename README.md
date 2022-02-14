@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [050: Large Elm Codebases with Ju Liu](https://elm-radio.com/episode/large-codebases)
 - [049: Optimizing Performance with Robin Hansen](https://elm-radio.com/episode/optimizing-elm)
 - [048: If It Compiles It Works](https://elm-radio.com/episode/if-it-compiles-it-works)
-- [047: What&#39;s Working for Elm](https://elm-radio.com/episode/whats-working-for-elm)
 <!-- ELM-RADIO-LIST:END -->
