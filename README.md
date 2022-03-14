@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [052: Category Theory in Elm with Joël Quenneville](https://elm-radio.com/episode/category-theory)
 - [051: Primitive Obsession](https://elm-radio.com/episode/primitive-obsession)
 - [050: Large Elm Codebases with Ju Liu](https://elm-radio.com/episode/large-codebases)
-- [049: Optimizing Performance with Robin Hansen](https://elm-radio.com/episode/optimizing-elm)
 <!-- ELM-RADIO-LIST:END -->
