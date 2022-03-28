@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [053: Dead Code](https://elm-radio.com/episode/dead-code)
 - [052: Category Theory in Elm with Joël Quenneville](https://elm-radio.com/episode/category-theory)
 - [051: Primitive Obsession](https://elm-radio.com/episode/primitive-obsession)
-- [050: Large Elm Codebases with Ju Liu](https://elm-radio.com/episode/large-codebases)
 <!-- ELM-RADIO-LIST:END -->
