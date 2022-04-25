@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [055: Use the Platform](https://elm-radio.com/episode/use-the-platform)
 - [054: Developer Productivity](https://elm-radio.com/episode/dev-productivity)
 - [053: Dead Code](https://elm-radio.com/episode/dead-code)
-- [052: Category Theory in Elm with Joël Quenneville](https://elm-radio.com/episode/category-theory)
 <!-- ELM-RADIO-LIST:END -->
