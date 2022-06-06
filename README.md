@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [058: Elm Store Pattern](https://elm-radio.com/episode/store-pattern)
 - [057: State of Elm 2022](https://elm-radio.com/episode/state-of-elm-2022)
 - [056: elm-book with Georges Boris](https://elm-radio.com/episode/elm-book)
-- [055: Use the Platform](https://elm-radio.com/episode/use-the-platform)
 <!-- ELM-RADIO-LIST:END -->
