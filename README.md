@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [059: Wrap Early, Unwrap Late](https://elm-radio.com/episode/wrap-early-unwrap-late)
 - [058: Elm Store Pattern](https://elm-radio.com/episode/store-pattern)
 - [057: State of Elm 2022](https://elm-radio.com/episode/state-of-elm-2022)
-- [056: elm-book with Georges Boris](https://elm-radio.com/episode/elm-book)
 <!-- ELM-RADIO-LIST:END -->
