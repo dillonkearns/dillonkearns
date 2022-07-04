@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [060: Building Trustworthy Tools](https://elm-radio.com/episode/trustworthy-tools)
 - [059: Wrap Early, Unwrap Late](https://elm-radio.com/episode/wrap-early-unwrap-late)
 - [058: Elm Store Pattern](https://elm-radio.com/episode/store-pattern)
-- [057: State of Elm 2022](https://elm-radio.com/episode/state-of-elm-2022)
 <!-- ELM-RADIO-LIST:END -->
