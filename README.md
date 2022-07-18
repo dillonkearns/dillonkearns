@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [061: Exploring a New Form API Design](https://elm-radio.com/episode/exploring-form-api)
 - [060: Building Trustworthy Tools](https://elm-radio.com/episode/trustworthy-tools)
 - [059: Wrap Early, Unwrap Late](https://elm-radio.com/episode/wrap-early-unwrap-late)
-- [058: Elm Store Pattern](https://elm-radio.com/episode/store-pattern)
 <!-- ELM-RADIO-LIST:END -->
