@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [062: elm-test v2 with Martin Janiczek](https://elm-radio.com/episode/elm-test-v2)
 - [061: Exploring a New Form API Design](https://elm-radio.com/episode/exploring-form-api)
 - [060: Building Trustworthy Tools](https://elm-radio.com/episode/trustworthy-tools)
-- [059: Wrap Early, Unwrap Late](https://elm-radio.com/episode/wrap-early-unwrap-late)
 <!-- ELM-RADIO-LIST:END -->
