@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [065: elm-watch with Simon Lydell](https://elm-radio.com/episode/elm-watch)
 - [064: Projects We Wish We Had Time For](https://elm-radio.com/episode/projects-we-wish-we-had-time-for)
 - [063: The Root Cause of False Positives](https://elm-radio.com/episode/false-positives)
-- [062: elm-test v2 with Martin Janiczek](https://elm-radio.com/episode/elm-test-v2)
 <!-- ELM-RADIO-LIST:END -->
