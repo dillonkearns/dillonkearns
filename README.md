@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [067: Elm at a Billion Dollar Company with Aaron White](https://elm-radio.com/episode/elm-at-a-billion-dollar-company)
 - [066: elm-codegen with Matthew Griffith](https://elm-radio.com/episode/elm-codegen)
 - [065: elm-watch with Simon Lydell](https://elm-radio.com/episode/elm-watch)
-- [064: Projects We Wish We Had Time For](https://elm-radio.com/episode/projects-we-wish-we-had-time-for)
 <!-- ELM-RADIO-LIST:END -->
