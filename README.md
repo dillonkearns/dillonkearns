@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [070: elm-gql with Matthew Griffith](https://elm-radio.com/episode/elm-gql)
 - [069: Types vs. Tests](https://elm-radio.com/episode/types-vs-tests)
 - [068: Elm and ADD](https://elm-radio.com/episode/add)
-- [067: Elm at a Billion Dollar Company with Aaron White](https://elm-radio.com/episode/elm-at-a-billion-dollar-company)
 <!-- ELM-RADIO-LIST:END -->
