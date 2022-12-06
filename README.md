@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [071: Deliberate Practice](https://elm-radio.com/episode/deliberate-practice)
 - [070: elm-gql with Matthew Griffith](https://elm-radio.com/episode/elm-gql)
 - [069: Types vs. Tests](https://elm-radio.com/episode/types-vs-tests)
-- [068: Elm and ADD](https://elm-radio.com/episode/add)
 <!-- ELM-RADIO-LIST:END -->
