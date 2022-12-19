@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [072: 2022 Holiday Special](https://elm-radio.com/episode/holiday-special-2022)
 - [071: Deliberate Practice](https://elm-radio.com/episode/deliberate-practice)
 - [070: elm-gql with Matthew Griffith](https://elm-radio.com/episode/elm-gql)
-- [069: Types vs. Tests](https://elm-radio.com/episode/types-vs-tests)
 <!-- ELM-RADIO-LIST:END -->
