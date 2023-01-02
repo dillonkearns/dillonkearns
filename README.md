@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [073: Security in Elm](https://elm-radio.com/episode/security)
 - [072: 2022 Holiday Special](https://elm-radio.com/episode/holiday-special-2022)
 - [071: Deliberate Practice](https://elm-radio.com/episode/deliberate-practice)
-- [070: elm-gql with Matthew Griffith](https://elm-radio.com/episode/elm-gql)
 <!-- ELM-RADIO-LIST:END -->
