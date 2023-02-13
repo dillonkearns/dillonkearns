@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [076: Elm and Vite](https://elm-radio.com/episode/vite)
 - [075: elm-pages scripts](https://elm-radio.com/episode/elm-pages-scripts)
 - [074: Plug and Play Design Systems with Georges Boris](https://elm-radio.com/episode/elm-widgets)
-- [073: Security in Elm](https://elm-radio.com/episode/security)
 <!-- ELM-RADIO-LIST:END -->
