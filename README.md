@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [077: elm-app-url with Simon Lydell](https://elm-radio.com/episode/elm-app-url)
 - [076: Elm and Vite](https://elm-radio.com/episode/vite)
 - [075: elm-pages scripts](https://elm-radio.com/episode/elm-pages-scripts)
-- [074: Plug and Play Design Systems with Georges Boris](https://elm-radio.com/episode/elm-widgets)
 <!-- ELM-RADIO-LIST:END -->
