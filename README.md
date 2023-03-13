@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [078: Color parameters in elm-tailwind-modules with Philipp Krüger](https://elm-radio.com/episode/tailwind-color-params)
 - [077: elm-app-url with Simon Lydell](https://elm-radio.com/episode/elm-app-url)
 - [076: Elm and Vite](https://elm-radio.com/episode/vite)
-- [075: elm-pages scripts](https://elm-radio.com/episode/elm-pages-scripts)
 <!-- ELM-RADIO-LIST:END -->
