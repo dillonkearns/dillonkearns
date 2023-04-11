@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [080: Elm and AI](https://elm-radio.com/episode/elm-and-ai)
 - [079: Scaffolding Elm Code](https://elm-radio.com/episode/scaffolding-elm-code)
 - [078: Color parameters in elm-tailwind-modules with Philipp Krüger](https://elm-radio.com/episode/tailwind-color-params)
-- [077: elm-app-url with Simon Lydell](https://elm-radio.com/episode/elm-app-url)
 <!-- ELM-RADIO-LIST:END -->
