@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [085: Why We Care About Elm](https://elm-radio.com/episode/why-we-care-about-elm)
 - [084: Writing Great Docs](https://elm-radio.com/episode/great-docs)
 - [083: elm-review Data Extractors](https://elm-radio.com/episode/elm-review-data-extractors)
-- [082: Elm and Haskell with Flavio Corpa](https://elm-radio.com/episode/haskell)
 <!-- ELM-RADIO-LIST:END -->
