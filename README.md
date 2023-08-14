@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [088: Avoiding Unused Code](https://elm-radio.com/episode/avoiding-unused-code)
 - [087: Evergreen Migrations with Mario Rogic](https://elm-radio.com/episode/evergreen)
 - [086: elm-pages v3](https://elm-radio.com/episode/elm-pages-v3)
-- [085: Why We Care About Elm](https://elm-radio.com/episode/why-we-care-about-elm)
 <!-- ELM-RADIO-LIST:END -->
