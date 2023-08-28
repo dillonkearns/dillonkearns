@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [089: The Human Side of Open Source](https://elm-radio.com/episode/human-side-of-open-source)
 - [088: Avoiding Unused Code](https://elm-radio.com/episode/avoiding-unused-code)
 - [087: Evergreen Migrations with Mario Rogic](https://elm-radio.com/episode/evergreen)
-- [086: elm-pages v3](https://elm-radio.com/episode/elm-pages-v3)
 <!-- ELM-RADIO-LIST:END -->
