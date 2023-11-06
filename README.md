@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [094: elm-concurrent-task with Andrew MacMurray](https://elm-radio.com/episode/elm-concurrent-task)
 - [093: elm-visualization with Jakub Hampl](https://elm-radio.com/episode/elm-visualization)
 - [092: Elm News with Wolfgang Schuster](https://elm-radio.com/episode/elm-news)
-- [091: Code Reading Club with Katja Mordaunt](https://elm-radio.com/episode/code-reading-club)
 <!-- ELM-RADIO-LIST:END -->
