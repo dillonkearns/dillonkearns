@@ -14,7 +14,7 @@
 
 ### 🎙 Recent [Elm Radio](https://elm-radio.com/) podcast episodes
 <!-- ELM-RADIO-LIST:START -->
+- [096: Optimizing Bundle Size](https://elm-radio.com/episode/bundle-size)
 - [095: elm-open-api with Wolfgang Schuster](https://elm-radio.com/episode/elm-open-api)
 - [094: elm-concurrent-task with Andrew MacMurray](https://elm-radio.com/episode/elm-concurrent-task)
-- [093: elm-visualization with Jakub Hampl](https://elm-radio.com/episode/elm-visualization)
 <!-- ELM-RADIO-LIST:END -->
