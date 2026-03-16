@@ -1,8 +1,8 @@
 name: Update package releases
 on:
   schedule:
-    # Runs every hour
-    - cron: '0 * * * *'
+    # Runs every 3 hours
+    - cron: '0 */3 * * *'
   workflow_dispatch:
 
 jobs:
@@ -18,6 +18,8 @@ jobs:
           cache-dependency-path: script/package-lock.json
       - name: Install dependencies
         run: cd script && npm install
+      - name: Run tests
+        run: cd script && npx elm-test
       - name: Run update script
         run: cd script && npx elm-pages run src/UpdateReleases.elm
       - name: Commit changes
