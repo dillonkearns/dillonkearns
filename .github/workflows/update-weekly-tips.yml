@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: script/package-lock.json
+      - name: Install lamdera
+        run: curl -sL https://install.lamdera.com | sh
       - name: Install dependencies
         run: cd script && npm install
       - name: Run update script
