@@ -16,10 +16,6 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: script/package-lock.json
-      - name: Install lamdera
-        run: |
-          curl -sL https://static.lamdera.com/bin/lamdera-1.3.2-linux-x86_64 -o /usr/local/bin/lamdera
-          chmod +x /usr/local/bin/lamdera
       - name: Install dependencies
         run: cd script && npm install
       - name: Run update script
