@@ -11,72 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Update package releases
-        run: |
-          set -euo pipefail
-
-          CHANGELOG_MAP="elm-pages:CHANGELOG-ELM.md elm-graphql:CHANGELOG-ELM-PACKAGE.md"
-          MAX=5
-
-          changelog_file() {
-            local pkg="$1"
-            for entry in $CHANGELOG_MAP; do
-              if [ "${entry%%:*}" = "$pkg" ]; then
-                echo "${entry#*:}"
-                return
-              fi
-            done
-            echo "CHANGELOG.md"
-          }
-
-          # GitHub anchor: lowercase, strip non-alphanumeric except hyphens and spaces, replace spaces with hyphens
-          github_anchor() {
-            echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 -]//g' | sed 's/ /-/g'
-          }
-
-          entries=$(curl -sf -H "User-Agent: github-actions" "https://releases.elm.dmy.fr/.rss?dillonkearns=*" \
-            | python3 -c "
-          import sys, xml.etree.ElementTree as ET
-          tree = ET.parse(sys.stdin)
-          for item in tree.findall('.//item')[:${MAX}]:
-              title = item.find('title').text
-              link = item.find('link').text
-              print(title + '\t' + link)
-          ")
-
-          lines=""
-          while IFS=$'\t' read -r title link; do
-            pkg="${title%%/*}"
-            rest="${title#*/}"
-            name="${rest%% *}"
-            version="${rest##* }"
-
-            file=$(changelog_file "$name")
-            raw_url="https://raw.githubusercontent.com/dillonkearns/${name}/${version}/${file}"
-
-            # Try to find the heading line matching ## [VERSION] - DATE
-            heading=$(curl -sf "$raw_url" 2>/dev/null | grep -m1 "^## \[${version}\]" || true)
-
-            if [ -n "$heading" ]; then
-              # Strip the leading "## " to get the heading text, then compute anchor
-              heading_text="${heading#\#\# }"
-              anchor=$(github_anchor "$heading_text")
-              changelog_url="https://github.com/dillonkearns/${name}/blob/${version}/${file}#${anchor}"
-              line="- [${name} ${version}](${link}) · [changelog](${changelog_url})"
-            else
-              changelog_url="https://github.com/dillonkearns/${name}/blob/${version}/${file}"
-              line="- [${name} ${version}](${link}) · [changelog](${changelog_url})"
-            fi
-
-            lines="${lines}${line}\n"
-          done <<< "$entries"
-
-          # Replace content between markers
-          awk -v content="$(printf '%b' "$lines")" '
-            /<!-- PACKAGE-RELEASES:START -->/ { print; printf "%s", content; skip=1; next }
-            /<!-- PACKAGE-RELEASES:END -->/ { skip=0 }
-            !skip { print }
-          ' README.md > README.md.tmp && mv README.md.tmp README.md
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: script/package-lock.json
+      - name: Install dependencies
+        run: cd script && npm install
+      - name: Run update script
+        run: cd script && npx elm-pages run src/UpdateReleases.elm
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"

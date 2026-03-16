@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "elm-pages": "3.3.0"
+  },
+  "devDependencies": {
+    "elm-test": "0.19.1-revision16"
+  }
+}
