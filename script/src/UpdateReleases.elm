@@ -1,16 +1,19 @@
 module UpdateReleases exposing
     ( PackageRelease
+    , ReleaseRow
     , changelogFileForPackage
     , changelogUrl
-    , deduplicateReleases
     , computeGithubAnchor
+    , deduplicateReleases
     , extractTag
     , fetchChangelogHeading
     , findChangelogHeading
-    , formatReleaseLine
+    , formatReleaseTable
     , generateReleaseLines
     , maxReleases
+    , parseReleaseNotes
     , parseRssItems
+    , releaseNotesKey
     , rssFeedUrl
     , run
     , updateReadmeContent
@@ -19,8 +22,9 @@ module UpdateReleases exposing
 import BackendTask exposing (BackendTask)
 import BackendTask.File
 import BackendTask.Http
+import Dict exposing (Dict)
 import FatalError exposing (FatalError)
-import Json.Encode as Encode
+import Json.Decode as Decode
 import Pages.Script as Script exposing (Script)
 
 
@@ -28,6 +32,13 @@ type alias PackageRelease =
     { name : String
     , version : String
     , docsUrl : String
+    }
+
+
+type alias ReleaseRow =
+    { release : PackageRelease
+    , changelogLink : String
+    , highlight : String
     }
 
 
@@ -97,7 +108,13 @@ parseItem itemXml =
                     parts |> List.head |> Maybe.withDefault ""
 
                 version =
-                    parts |> List.drop 1 |> List.head |> Maybe.withDefault ""
+                    parts
+                        |> List.drop 1
+                        |> List.head
+                        |> Maybe.withDefault ""
+                        |> String.toList
+                        |> List.filter (\c -> Char.isDigit c || c == '.')
+                        |> String.fromList
 
                 name =
                     fullName
@@ -150,6 +167,22 @@ deduplicateReleases releases =
 
 
 
+-- RELEASE NOTES
+
+
+releaseNotesKey : PackageRelease -> String
+releaseNotesKey release =
+    release.name ++ "@" ++ release.version
+
+
+parseReleaseNotes : String -> Dict String String
+parseReleaseNotes json =
+    json
+        |> Decode.decodeString (Decode.dict Decode.string)
+        |> Result.withDefault Dict.empty
+
+
+
 -- CHANGELOG
 
 
@@ -198,17 +231,31 @@ changelogUrl release maybeHeading =
 -- FORMATTING
 
 
-formatReleaseLine : PackageRelease -> String -> String
-formatReleaseLine release changelogLink =
-    "- ["
-        ++ release.name
-        ++ " "
-        ++ release.version
-        ++ "]("
-        ++ release.docsUrl
-        ++ ") · [changelog]("
-        ++ changelogLink
-        ++ ")"
+formatReleaseTable : List ReleaseRow -> String
+formatReleaseTable rows =
+    let
+        header =
+            "| Package | Highlights |\n| :------ | :--------- |"
+
+        formatRow row =
+            "| ["
+                ++ row.release.name
+                ++ " "
+                ++ row.release.version
+                ++ "]("
+                ++ row.release.docsUrl
+                ++ ") · [changelog]("
+                ++ row.changelogLink
+                ++ ") | "
+                ++ row.highlight
+                ++ " |"
+    in
+    case rows of
+        [] ->
+            header
+
+        _ ->
+            header ++ "\n" ++ String.join "\n" (List.map formatRow rows)
 
 
 
@@ -268,26 +315,49 @@ fetchChangelogHeading release =
             )
 
 
+loadReleaseNotes : BackendTask FatalError (Dict String String)
+loadReleaseNotes =
+    BackendTask.File.rawFile "../release-notes.json"
+        |> BackendTask.toResult
+        |> BackendTask.map
+            (\result ->
+                case result of
+                    Ok content ->
+                        parseReleaseNotes content
+
+                    Err _ ->
+                        Dict.empty
+            )
+
+
 generateReleaseLines : BackendTask FatalError String
 generateReleaseLines =
-    BackendTask.Http.get rssFeedUrl BackendTask.Http.expectString
-        |> BackendTask.allowFatal
-        |> BackendTask.map parseRssItems
-        |> BackendTask.map deduplicateReleases
-        |> BackendTask.map (List.take maxReleases)
+    BackendTask.map2 Tuple.pair
+        (BackendTask.Http.get rssFeedUrl BackendTask.Http.expectString
+            |> BackendTask.allowFatal
+            |> BackendTask.map parseRssItems
+            |> BackendTask.map deduplicateReleases
+            |> BackendTask.map (List.take maxReleases)
+        )
+        loadReleaseNotes
         |> BackendTask.andThen
-            (\releases ->
+            (\( releases, notes ) ->
                 releases
                     |> List.map
                         (\release ->
                             fetchChangelogHeading release
                                 |> BackendTask.map
                                     (\maybeHeading ->
-                                        formatReleaseLine release (changelogUrl release maybeHeading)
+                                        { release = release
+                                        , changelogLink = changelogUrl release maybeHeading
+                                        , highlight =
+                                            Dict.get (releaseNotesKey release) notes
+                                                |> Maybe.withDefault ""
+                                        }
                                     )
                         )
                     |> BackendTask.combine
-                    |> BackendTask.map (String.join "\n")
+                    |> BackendTask.map formatReleaseTable
             )
 
 

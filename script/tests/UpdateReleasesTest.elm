@@ -1,5 +1,6 @@
 module UpdateReleasesTest exposing (all)
 
+import Dict
 import Expect
 import Json.Encode as Encode
 import Test exposing (Test, describe, test)
@@ -43,7 +44,8 @@ all =
         , findChangelogHeadingTests
         , computeGithubAnchorTests
         , changelogUrlTests
-        , formatReleaseLineTests
+        , formatReleaseTableTests
+        , parseReleaseNotesTests
         , updateReadmeContentTests
         , deduplicateTests
         , fullScriptTests
@@ -207,22 +209,72 @@ changelogUrlTests =
         ]
 
 
-formatReleaseLineTests : Test
-formatReleaseLineTests =
-    describe "formatReleaseLine"
-        [ test "formats a release line with changelog link" <|
+formatReleaseTableTests : Test
+formatReleaseTableTests =
+    describe "formatReleaseTable"
+        [ test "formats releases as a markdown table" <|
+            \() ->
+                let
+                    rows =
+                        [ { release = { name = "elm-pages", version = "12.1.0", docsUrl = "https://docs/elm-pages/12.1.0/" }
+                          , changelogLink = "https://changelog/elm-pages"
+                          , highlight = "Adds `Test.BackendTask` for pure script testing"
+                          }
+                        , { release = { name = "elm-snapshot", version = "1.1.1", docsUrl = "https://docs/elm-snapshot/1.1.1/" }
+                          , changelogLink = "https://changelog/elm-snapshot"
+                          , highlight = ""
+                          }
+                        ]
+                in
+                UpdateReleases.formatReleaseTable rows
+                    |> Expect.equal
+                        ("| Package | Highlights |\n"
+                            ++ "| :------ | :--------- |\n"
+                            ++ "| [elm-pages 12.1.0](https://docs/elm-pages/12.1.0/) · [changelog](https://changelog/elm-pages) | Adds `Test.BackendTask` for pure script testing |\n"
+                            ++ "| [elm-snapshot 1.1.1](https://docs/elm-snapshot/1.1.1/) · [changelog](https://changelog/elm-snapshot) |  |"
+                        )
+        , test "renders empty table with just header when no releases" <|
+            \() ->
+                UpdateReleases.formatReleaseTable []
+                    |> Expect.equal
+                        ("| Package | Highlights |\n"
+                            ++ "| :------ | :--------- |"
+                        )
+        ]
+
+
+parseReleaseNotesTests : Test
+parseReleaseNotesTests =
+    describe "parseReleaseNotes"
+        [ test "parses JSON into a Dict" <|
+            \() ->
+                let
+                    json =
+                        """{"elm-pages@12.1.0": "Adds Test.BackendTask", "elm-snapshot@1.1.1": "Fixes snapshot diffing"}"""
+                in
+                UpdateReleases.parseReleaseNotes json
+                    |> Expect.equal
+                        (Dict.fromList
+                            [ ( "elm-pages@12.1.0", "Adds Test.BackendTask" )
+                            , ( "elm-snapshot@1.1.1", "Fixes snapshot diffing" )
+                            ]
+                        )
+        , test "returns empty dict for invalid JSON" <|
+            \() ->
+                UpdateReleases.parseReleaseNotes "not json"
+                    |> Expect.equal Dict.empty
+        , test "returns empty dict for empty object" <|
+            \() ->
+                UpdateReleases.parseReleaseNotes "{}"
+                    |> Expect.equal Dict.empty
+        , test "releaseNotesKey builds correct key" <|
             \() ->
                 let
                     release =
-                        { name = "elm-pages"
-                        , version = "12.1.0"
-                        , docsUrl = "https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/"
-                        }
+                        { name = "elm-pages", version = "12.1.0", docsUrl = "" }
                 in
-                UpdateReleases.formatReleaseLine release
-                    "https://github.com/dillonkearns/elm-pages/blob/12.1.0/CHANGELOG-ELM.md#1210---2026-03-14"
-                    |> Expect.equal
-                        "- [elm-pages 12.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.1.0/CHANGELOG-ELM.md#1210---2026-03-14)"
+                UpdateReleases.releaseNotesKey release
+                    |> Expect.equal "elm-pages@12.1.0"
         ]
 
 
@@ -236,11 +288,11 @@ updateReadmeContentTests =
                         "before\n<!-- PACKAGE-RELEASES:START -->\nold content\n<!-- PACKAGE-RELEASES:END -->\nafter"
 
                     newContent =
-                        "- line 1\n- line 2"
+                        "| Package | Highlights |\n| :------ | :--------- |"
                 in
                 UpdateReleases.updateReadmeContent newContent readme
                     |> Expect.equal
-                        "before\n<!-- PACKAGE-RELEASES:START -->\n- line 1\n- line 2\n<!-- PACKAGE-RELEASES:END -->\nafter"
+                        "before\n<!-- PACKAGE-RELEASES:START -->\n| Package | Highlights |\n| :------ | :--------- |\n<!-- PACKAGE-RELEASES:END -->\nafter"
         , test "handles empty existing content between markers" <|
             \() ->
                 let
@@ -291,7 +343,139 @@ deduplicateTests =
             \() ->
                 UpdateReleases.deduplicateReleases []
                     |> Expect.equal []
-        , test "script deduplicates in full pipeline" <|
+        ]
+
+
+fullScriptTests : Test
+fullScriptTests =
+    describe "full script"
+        [ test "generates table with highlights from release-notes.json" <|
+            \() ->
+                let
+                    rss =
+                        """<?xml version="1.0"?>
+<rss><channel>
+<item>
+<title>dillonkearns/elm-pages 12.1.0</title>
+<link>https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/</link>
+</item>
+<item>
+<title>dillonkearns/elm-snapshot 1.1.1</title>
+<link>https://package.elm-lang.org/packages/dillonkearns/elm-snapshot/1.1.1/</link>
+</item>
+</channel></rss>"""
+
+                    releaseNotes =
+                        """{"elm-pages@12.1.0": "Adds `Test.BackendTask` for pure script testing"}"""
+
+                    readmeTemplate =
+                        "# Hi\n<!-- PACKAGE-RELEASES:START -->\n<!-- PACKAGE-RELEASES:END -->\n"
+
+                    expectedReadme =
+                        "# Hi\n<!-- PACKAGE-RELEASES:START -->\n"
+                            ++ "| Package | Highlights |\n"
+                            ++ "| :------ | :--------- |\n"
+                            ++ "| [elm-pages 12.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.1.0/CHANGELOG-ELM.md#1210---2026-03-14) | Adds `Test.BackendTask` for pure script testing |\n"
+                            ++ "| [elm-snapshot 1.1.1](https://package.elm-lang.org/packages/dillonkearns/elm-snapshot/1.1.1/) · [changelog](https://github.com/dillonkearns/elm-snapshot/blob/1.1.1/CHANGELOG.md#111) |  |"
+                            ++ "\n<!-- PACKAGE-RELEASES:END -->\n"
+                in
+                UpdateReleases.run
+                    |> BackendTaskTest.fromScriptWith
+                        (BackendTaskTest.init
+                            |> BackendTaskTest.withFile "README.md" readmeTemplate
+                            |> BackendTaskTest.withFile "release-notes.json" releaseNotes
+                        )
+                        []
+                    |> BackendTaskTest.simulateHttpGet
+                        UpdateReleases.rssFeedUrl
+                        (Encode.string rss)
+                    |> BackendTaskTest.simulateHttpGet
+                        "https://raw.githubusercontent.com/dillonkearns/elm-pages/12.1.0/CHANGELOG-ELM.md"
+                        (Encode.string "## [12.1.0] - 2026-03-14\n\nChanges here")
+                    |> BackendTaskTest.simulateHttpGet
+                        "https://raw.githubusercontent.com/dillonkearns/elm-snapshot/1.1.1/CHANGELOG.md"
+                        (Encode.string "## [1.1.1]\n\nFixes")
+                    |> BackendTaskTest.ensureFile "README.md" expectedReadme
+                    |> BackendTaskTest.expectSuccess
+        , test "works without release-notes.json" <|
+            \() ->
+                let
+                    rss =
+                        """<?xml version="1.0"?>
+<rss><channel>
+<item>
+<title>dillonkearns/elm-pages 12.1.0</title>
+<link>https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/</link>
+</item>
+</channel></rss>"""
+
+                    readmeTemplate =
+                        "<!-- PACKAGE-RELEASES:START -->\n<!-- PACKAGE-RELEASES:END -->"
+
+                    expectedReadme =
+                        "<!-- PACKAGE-RELEASES:START -->\n"
+                            ++ "| Package | Highlights |\n"
+                            ++ "| :------ | :--------- |\n"
+                            ++ "| [elm-pages 12.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.1.0/CHANGELOG-ELM.md#1210---2026-03-14) |  |"
+                            ++ "\n<!-- PACKAGE-RELEASES:END -->"
+                in
+                UpdateReleases.run
+                    |> BackendTaskTest.fromScriptWith
+                        (BackendTaskTest.init
+                            |> BackendTaskTest.withFile "README.md" readmeTemplate
+                        )
+                        []
+                    |> BackendTaskTest.simulateHttpGet
+                        UpdateReleases.rssFeedUrl
+                        (Encode.string rss)
+                    |> BackendTaskTest.simulateHttpGet
+                        "https://raw.githubusercontent.com/dillonkearns/elm-pages/12.1.0/CHANGELOG-ELM.md"
+                        (Encode.string "## [12.1.0] - 2026-03-14\n\nChanges")
+                    |> BackendTaskTest.ensureFile "README.md" expectedReadme
+                    |> BackendTaskTest.expectSuccess
+        , test "handles missing changelog gracefully" <|
+            \() ->
+                let
+                    rss =
+                        """<?xml version="1.0"?>
+<rss><channel>
+<item>
+<title>dillonkearns/elm-oembed 1.1.0</title>
+<link>https://package.elm-lang.org/packages/dillonkearns/elm-oembed/1.1.0/</link>
+</item>
+</channel></rss>"""
+
+                    readmeTemplate =
+                        "<!-- PACKAGE-RELEASES:START -->\n<!-- PACKAGE-RELEASES:END -->"
+
+                    expectedReadme =
+                        "<!-- PACKAGE-RELEASES:START -->\n"
+                            ++ "| Package | Highlights |\n"
+                            ++ "| :------ | :--------- |\n"
+                            ++ "| [elm-oembed 1.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-oembed/1.1.0/) · [changelog](https://github.com/dillonkearns/elm-oembed/blob/1.1.0/CHANGELOG.md) |  |"
+                            ++ "\n<!-- PACKAGE-RELEASES:END -->"
+                in
+                UpdateReleases.run
+                    |> BackendTaskTest.fromScriptWith
+                        (BackendTaskTest.init
+                            |> BackendTaskTest.withFile "README.md" readmeTemplate
+                        )
+                        []
+                    |> BackendTaskTest.simulateHttpGet
+                        UpdateReleases.rssFeedUrl
+                        (Encode.string rss)
+                    |> BackendTaskTest.simulateHttp
+                        { method = "GET"
+                        , url = "https://raw.githubusercontent.com/dillonkearns/elm-oembed/1.1.0/CHANGELOG.md"
+                        }
+                        { statusCode = 404
+                        , statusText = "Not Found"
+                        , headers = []
+                        , body = Encode.string ""
+                        }
+                    |> BackendTaskTest.ensureFile "README.md" expectedReadme
+                    |> BackendTaskTest.expectSuccess
+        , test "deduplicates in full pipeline" <|
             \() ->
                 let
                     rss =
@@ -316,8 +500,10 @@ deduplicateTests =
 
                     expectedReadme =
                         "<!-- PACKAGE-RELEASES:START -->\n"
-                            ++ "- [elm-pages 12.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.1.0/CHANGELOG-ELM.md#1210---2026-03-14)\n"
-                            ++ "- [elm-cli-options-parser 5.0.1](https://package.elm-lang.org/packages/dillonkearns/elm-cli-options-parser/5.0.1/) · [changelog](https://github.com/dillonkearns/elm-cli-options-parser/blob/5.0.1/CHANGELOG.md#501)"
+                            ++ "| Package | Highlights |\n"
+                            ++ "| :------ | :--------- |\n"
+                            ++ "| [elm-pages 12.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.1.0/CHANGELOG-ELM.md#1210---2026-03-14) |  |\n"
+                            ++ "| [elm-cli-options-parser 5.0.1](https://package.elm-lang.org/packages/dillonkearns/elm-cli-options-parser/5.0.1/) · [changelog](https://github.com/dillonkearns/elm-cli-options-parser/blob/5.0.1/CHANGELOG.md#501) |  |"
                             ++ "\n<!-- PACKAGE-RELEASES:END -->"
                 in
                 UpdateReleases.run
@@ -335,128 +521,6 @@ deduplicateTests =
                     |> BackendTaskTest.simulateHttpGet
                         "https://raw.githubusercontent.com/dillonkearns/elm-cli-options-parser/5.0.1/CHANGELOG.md"
                         (Encode.string "## [5.0.1]\n\nChanges")
-                    |> BackendTaskTest.ensureFile "README.md" expectedReadme
-                    |> BackendTaskTest.expectSuccess
-        ]
-
-
-fullScriptTests : Test
-fullScriptTests =
-    describe "full script"
-        [ test "fetches RSS, changelogs, and updates README" <|
-            \() ->
-                let
-                    rss =
-                        """<?xml version="1.0"?>
-<rss><channel>
-<item>
-<title>dillonkearns/elm-pages 12.1.0</title>
-<link>https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/</link>
-</item>
-<item>
-<title>dillonkearns/elm-snapshot 1.1.1</title>
-<link>https://package.elm-lang.org/packages/dillonkearns/elm-snapshot/1.1.1/</link>
-</item>
-</channel></rss>"""
-
-                    readmeTemplate =
-                        "# Hi\n<!-- PACKAGE-RELEASES:START -->\n<!-- PACKAGE-RELEASES:END -->\n"
-
-                    expectedReadme =
-                        "# Hi\n<!-- PACKAGE-RELEASES:START -->\n"
-                            ++ "- [elm-pages 12.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.1.0/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.1.0/CHANGELOG-ELM.md#1210---2026-03-14)\n"
-                            ++ "- [elm-snapshot 1.1.1](https://package.elm-lang.org/packages/dillonkearns/elm-snapshot/1.1.1/) · [changelog](https://github.com/dillonkearns/elm-snapshot/blob/1.1.1/CHANGELOG.md#111)"
-                            ++ "\n<!-- PACKAGE-RELEASES:END -->\n"
-                in
-                UpdateReleases.run
-                    |> BackendTaskTest.fromScriptWith
-                        (BackendTaskTest.init
-                            |> BackendTaskTest.withFile "README.md" readmeTemplate
-                        )
-                        []
-                    |> BackendTaskTest.simulateHttpGet
-                        UpdateReleases.rssFeedUrl
-                        (Encode.string rss)
-                    |> BackendTaskTest.simulateHttpGet
-                        "https://raw.githubusercontent.com/dillonkearns/elm-pages/12.1.0/CHANGELOG-ELM.md"
-                        (Encode.string "## [12.1.0] - 2026-03-14\n\nChanges here")
-                    |> BackendTaskTest.simulateHttpGet
-                        "https://raw.githubusercontent.com/dillonkearns/elm-snapshot/1.1.1/CHANGELOG.md"
-                        (Encode.string "## [1.1.1]\n\nFixes")
-                    |> BackendTaskTest.ensureFile "README.md" expectedReadme
-                    |> BackendTaskTest.expectSuccess
-        , test "handles missing changelog gracefully" <|
-            \() ->
-                let
-                    rss =
-                        """<?xml version="1.0"?>
-<rss><channel>
-<item>
-<title>dillonkearns/elm-oembed 1.1.0</title>
-<link>https://package.elm-lang.org/packages/dillonkearns/elm-oembed/1.1.0/</link>
-</item>
-</channel></rss>"""
-
-                    readmeTemplate =
-                        "<!-- PACKAGE-RELEASES:START -->\n<!-- PACKAGE-RELEASES:END -->"
-
-                    expectedReadme =
-                        "<!-- PACKAGE-RELEASES:START -->\n"
-                            ++ "- [elm-oembed 1.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-oembed/1.1.0/) · [changelog](https://github.com/dillonkearns/elm-oembed/blob/1.1.0/CHANGELOG.md)"
-                            ++ "\n<!-- PACKAGE-RELEASES:END -->"
-                in
-                UpdateReleases.run
-                    |> BackendTaskTest.fromScriptWith
-                        (BackendTaskTest.init
-                            |> BackendTaskTest.withFile "README.md" readmeTemplate
-                        )
-                        []
-                    |> BackendTaskTest.simulateHttpGet
-                        UpdateReleases.rssFeedUrl
-                        (Encode.string rss)
-                    |> BackendTaskTest.simulateHttp
-                        { method = "GET"
-                        , url = "https://raw.githubusercontent.com/dillonkearns/elm-oembed/1.1.0/CHANGELOG.md"
-                        }
-                        { statusCode = 404
-                        , statusText = "Not Found"
-                        , headers = []
-                        , body = Encode.string ""
-                        }
-                    |> BackendTaskTest.ensureFile "README.md" expectedReadme
-                    |> BackendTaskTest.expectSuccess
-        , test "changelog heading without date links without anchor" <|
-            \() ->
-                let
-                    rss =
-                        """<?xml version="1.0"?>
-<rss><channel>
-<item>
-<title>dillonkearns/elm-cli-options-parser 5.0.1</title>
-<link>https://package.elm-lang.org/packages/dillonkearns/elm-cli-options-parser/5.0.1/</link>
-</item>
-</channel></rss>"""
-
-                    readmeTemplate =
-                        "<!-- PACKAGE-RELEASES:START -->\n<!-- PACKAGE-RELEASES:END -->"
-
-                    expectedReadme =
-                        "<!-- PACKAGE-RELEASES:START -->\n"
-                            ++ "- [elm-cli-options-parser 5.0.1](https://package.elm-lang.org/packages/dillonkearns/elm-cli-options-parser/5.0.1/) · [changelog](https://github.com/dillonkearns/elm-cli-options-parser/blob/5.0.1/CHANGELOG.md#501)"
-                            ++ "\n<!-- PACKAGE-RELEASES:END -->"
-                in
-                UpdateReleases.run
-                    |> BackendTaskTest.fromScriptWith
-                        (BackendTaskTest.init
-                            |> BackendTaskTest.withFile "README.md" readmeTemplate
-                        )
-                        []
-                    |> BackendTaskTest.simulateHttpGet
-                        UpdateReleases.rssFeedUrl
-                        (Encode.string rss)
-                    |> BackendTaskTest.simulateHttpGet
-                        "https://raw.githubusercontent.com/dillonkearns/elm-cli-options-parser/5.0.1/CHANGELOG.md"
-                        (Encode.string "## [5.0.1]\n\n### Changed\n\n- Something")
                     |> BackendTaskTest.ensureFile "README.md" expectedReadme
                     |> BackendTaskTest.expectSuccess
         ]

@@ -1,0 +1,4 @@
+{
+  "elm-pages@12.1.0": "Adds `Test.BackendTask` for pure testing of scripts and BackendTasks",
+  "elm-pages@12.0.0": "Major release with new script testing infrastructure"
+}
