@@ -5,7 +5,7 @@
 <!-- PACKAGE-RELEASES:START -->
 | Package | Highlights |
 | :------ | :--------- |
-| [elm-pages 12.2.1](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.2.1/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.2.1/CHANGELOG-ELM.md#1221---2026-04-28) |  |
+| [elm-pages 12.3.0](https://package.elm-lang.org/packages/dillonkearns/elm-pages/12.3.0/) · [changelog](https://github.com/dillonkearns/elm-pages/blob/12.3.0/CHANGELOG-ELM.md#1230---2026-05-10) |  |
 | [elm-ts-json 2.1.3](https://package.elm-lang.org/packages/dillonkearns/elm-ts-json/2.1.3/) · [changelog](https://github.com/dillonkearns/elm-ts-json/blob/2.1.3/CHANGELOG.md#213---2026-04-08) |  |
 | [elm-form 3.1.0](https://package.elm-lang.org/packages/dillonkearns/elm-form/3.1.0/) · [changelog](https://github.com/dillonkearns/elm-form/blob/3.1.0/CHANGELOG.md#310---2026-03-26) |  |
 | [elm-ical 1.0.0](https://package.elm-lang.org/packages/dillonkearns/elm-ical/1.0.0/) · [changelog](https://github.com/dillonkearns/elm-ical/blob/1.0.0/CHANGELOG.md) |  |
